@@ -189,6 +189,12 @@ export default function ProjectItem({ data }) {
                 </div>
             </div>
             <div className="w-full md:w-96 md:max-w-full mx-auto">
+                <iframe
+                    src="https://idpluto.grafana.net/d-solo/fb2cb99f-aeaa-4be5-bcee-e5782d21052f/sensordashboard?orgId=1&from=1687685193877&to=1687685253877&refresh=5s&theme=dark&panelId=1"
+                    width={450}
+                    height={200}
+                    frameBorder={0}
+                />
                 <div className="bg-white shadow-lg rounded-xl flex items-start max-w-1/2 w-[90%] lg:w-full justify-center py-4 px-4 mx-4 my-2">
                     <div className="flex items-center justify-start w-full">
                         <div className="flex-col w-[85%]">
@@ -222,7 +228,7 @@ export default function ProjectItem({ data }) {
                                     <div className="h-16 w-6 rounded-tr rounded-tl bg-gray-100 mx-2">
                                         <div className="h-[44%] w-6 rounded-tr rounded-tl bg-green-300" />
                                     </div>
-                                    <div className="text-xs font-medium ml-2 text-gray-500">idx</div>
+                                    <div className="text-xs font-medium ml-2 text-gray-500">Idx</div>
                                 </div>
                                 <div className="flex-col">
                                     <div className="h-16 w-6 rounded-tr rounded-tl bg-gray-100 mx-2">
@@ -255,5 +261,6 @@ export default function ProjectItem({ data }) {
             </div>
         </>
         //https://herotofu.com/solutions/forms-library/tailwind/questionnaire-form
+        //https://tailblocks.org/stats3
     );
 }
