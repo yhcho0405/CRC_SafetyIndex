@@ -189,10 +189,10 @@ export default function ProjectItem({ data }) {
                 </div>
             </div>
             <div className="w-full md:w-96 md:max-w-full mx-auto">
-                <iframe src="https://9a3d-210-102-180-52.ngrok-free.app/d-solo/c8155aca-3daa-44b5-ae90-1b38bb839b9a/new-dashboard?orgId=1&from=1687761845265&to=1687761905265&refresh=5s&theme=dark&panelId=1" 
-                    width="450" 
-                    height="200" f
-                    rameborder="0">
+                <iframe src="https://9a3d-210-102-180-52.ngrok-free.app/d-solo/c8155aca-3daa-44b5-ae90-1b38bb839b9a/new-dashboard?orgId=1&from=1687764799828&to=1687764859828&refresh=5s&panelId=1" 
+                                width="450" 
+                                height="200" 
+                                frameborder="0">
                 </iframe>
                 <div className="bg-white shadow-lg rounded-xl flex items-start max-w-1/2 w-[90%] lg:w-full justify-center py-4 px-4 mx-4 my-2">
                     <div className="flex items-center justify-start w-full">
