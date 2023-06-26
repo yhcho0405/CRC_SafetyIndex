@@ -189,7 +189,7 @@ export default function ProjectItem({ data }) {
                 </div>
             </div>
             <div className="w-full md:w-96 md:max-w-full mx-auto">
-                <iframe src="https://9a3d-210-102-180-52.ngrok-free.app/d-solo/c8155aca-3daa-44b5-ae90-1b38bb839b9a/new-dashboard?orgId=1&from=now-5m&to=now&refresh=5s&panelId=1" 
+                <iframe src="https://7b86-210-102-180-52.ngrok-free.app/d-solo/c8155aca-3daa-44b5-ae90-1b38bb839b9a/new-dashboard?orgId=1&from=now-5m&to=now&refresh=5s&panelId=1" 
                                 width="450" 
                                 height="200" 
                                 frameborder="0">
