@@ -190,7 +190,7 @@ export default function ProjectItem({ data }) {
             </div>
             <div className="w-full md:w-96 md:max-w-full mx-auto">
                <iframe
-                    src="http://crc-safety-index.kro.kr:3000/d-solo/dac45951-a9f0-4bc9-a473-7f013ffbb578/new-dashboard?orgId=1&from=now-24h&to=now&panelId=1"
+                    src="http://crc-safety-index.kro.kr:3000/d-solo/dac45951-a9f0-4bc9-a473-7f013ffbb578/new-dashboard?orgId=1&panelId=1"
                     width={450}
                     height={200}
                     frameBorder={0}
