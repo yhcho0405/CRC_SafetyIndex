@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { fetchAccelerationData } from "./projects/sensorvalue-item.js";
+
 function scalingBpm(heart_rate) {
     if (heart_rate >= 60 && heart_rate <= 100) {
         return 0;
@@ -139,7 +142,10 @@ function scalingAltitude(altitude) {
         return 5; // abnormal and dangerous
     }
 }
-
+function scalingAcc(acc) {
+    acc = Math.abs(acc);
+    return Math.min(5, acc * 5);
+}
 function pearsonCorrelation(x, y) {
     if (x.length !== y.length) {
         //throw "same length";
@@ -199,7 +205,7 @@ function safe_level(s_result) {
         return 3;
     }
 }
-export default function calc(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15) {
+export default function calc(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, lastXValue, lastYValue, lastZValue) {
     var q1_b = parseInt(s1); //심박수 40~120 6/1
     var q2_b = parseInt(s2); //온도
     var q3_b = parseInt(s3); //산소포화도 < 95, >95
@@ -217,21 +223,21 @@ export default function calc(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, 
     var q20_b = s15 - 1;
 
     // 헬멧
-    var q4_b = 2; //
-    var q5_b = 2; //
-    var q9_b = 2; //
+    var q4_b = scalingAcc(lastXValue); //
+    var q5_b = scalingAcc(lastYValue); //
+    var q9_b = scalingAcc(lastZValue); //
     var q15_b = 2;
     var q16_b = 2;
 
     var q1 = scalingBpm(q1_b); //+ Math.random()/100;
     var q2 = scalingBodyTemperture(q2_b); // + Math.random()/100;
     var q3 = scalingOxygen(q3_b); // + Math.random()/100;
-    var q4 = scalingImpulse(q4_b); // + Math.random()/100;
-    var q5 = scalingAcceleration(q5_b); // + Math.random()/100;
+    var q4 = q4_b; //scalingImpulse(q4_b); // + Math.random()/100;
+    var q5 = q5_b; //scalingAcceleration(q5_b); // + Math.random()/100;
     var q6 = scalingCAI(q6_b); // + Math.random()/100;
     var q7 = scalingAmbientTemperture(q7_b); // + Math.random()/100;
     var q8 = scalingAltitude(q8_b); // + Math.random()/100;
-    var q9 = scalingImpactDuration(q9_b); // + Math.random()/100;
+    var q9 = q9_b; //scalingImpactDuration(q9_b); // + Math.random()/100;
     var q10 = Number(q10_b); // + Math.random()/100;
     var q11 = Number(q11_b); /// + Math.random()/100;
     var q12 = Number(q12_b); // + Math.random()/100;
@@ -264,9 +270,12 @@ export default function calc(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, 
     var newB = calc_index(B, A, D, C, 1, 1, 1); // b, d, e);
     var newC = calc_index(C, B, C, D, 1, 1, 1); // c, e, f);
     var newD = calc_index(D, A, D, B, 1, 1, 1); // a, d, f);
-    console.log(newA, newB, newC, newD);
     var temp;
-    if (Math.max(newA, newB, newC, newD) >= 8 || Math.max(q4 + q5 + q9 + q15 + q16, q6 + q7 + q8 + q17 + q18, q10 + q11 + q12 + q19 + q20, q1 + q2 + q3 + q13 + q14) >= 14) {
+    if (
+        Math.max(newA, newB, newC, newD) >= 8 ||
+        Math.max(q4 + q5 + q9 + q15 + q16, q6 + q7 + q8 + q17 + q18, q10 + q11 + q12 + q19 + q20, q1 + q2 + q3 + q13 + q14) >= 14 ||
+        Math.max(q4, q5, q9, q15, q16, q6, q7, q8, q17, q18, q10, q11, q12, q19, q20, q1, q2, q3, q13, q14) == 5
+    ) {
         temp = 0;
     } else {
         temp = (newA + newB + newC + newD) / 4;

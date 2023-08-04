@@ -1,0 +1,4 @@
+.ta-test {
+    transition-property: height;
+    transition-duration: 0.1s;
+}
