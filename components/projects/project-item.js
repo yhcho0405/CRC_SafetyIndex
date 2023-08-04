@@ -324,7 +324,7 @@ export default function ProjectItem({ data }) {
                                 placeholder={Math.abs(lastXValue) + Math.abs(lastXValue) + Math.abs(lastXValue)}
                             />
                         </label>
-                        <div className="mb-6">
+                        {/* <div className="mb-6">
                             <button
                                 type="submit"
                                 className="
@@ -341,7 +341,7 @@ export default function ProjectItem({ data }) {
                             >
                                 저장
                             </button>
-                        </div>
+                        </div> */}
 
                         <div>
                             <div className="mt-2  text-right text-xs">
